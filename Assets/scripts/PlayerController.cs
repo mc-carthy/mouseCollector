@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -14,6 +15,16 @@ public class PlayerController : MonoBehaviour {
 		MovePlayerToMouse ();
 	}
 
+	private void OnTriggerEnter2D (Collider2D trig) {
+		if (trig.tag == "collectable") {
+			Destroy (trig.gameObject);
+		}
+
+		if (trig.tag == "badCollectable") {
+			RestartLevel ();
+		}
+	}
+
 	private void MovePlayerToMouse () {
 		Vector3 mousePos = Input.mousePosition;
 		mousePos.z = transform.position.z - Camera.main.transform.position.z;
@@ -23,5 +34,9 @@ public class PlayerController : MonoBehaviour {
 
 	private void HideMouseCursor () {
 		Cursor.visible = false;
+	}
+
+	private void RestartLevel () {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name, LoadSceneMode.Single);
 	}
 }

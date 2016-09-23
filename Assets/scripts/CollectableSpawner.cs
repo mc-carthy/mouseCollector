@@ -8,7 +8,7 @@ public class CollectableSpawner : MonoBehaviour {
 	[SerializeField]
 	private float collectableSpawnTime, badCollectableSpawnTime;
 	[SerializeField]
-	private bool canSpawnCollectable, canSpawnBadCollectable;
+	private bool canSpawnCollectable = true, canSpawnBadCollectable = true;
 	private float xClamp, yClamp;
 
 	private void Start () {
