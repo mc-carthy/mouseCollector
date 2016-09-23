@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnTriggerEnter2D (Collider2D trig) {
 		if (trig.tag == "collectable") {
+			ScoreController.instance.IncrementScore ();
 			Destroy (trig.gameObject);
 		}
 
